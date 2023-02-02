@@ -1,5 +1,6 @@
 const express = require('express')
-const { allPosts, getPost, newPost} = require('./fakeApi')
+const fakeApi = require('./fakeApi')
+const { allPosts, getPost, createPost, deletePost, updatePost } = fakeApi
 // const { engine } = require('express-handlebars')
 
 const app = express()
@@ -20,21 +21,40 @@ app.use(express.json());
 // app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.send(allPosts())
+    let posts = allPosts()
+    res.send(posts)
 })
 
-app.get('/new', (req, res) => {
+app.post('/', (req, res) => {
     let author = req.body.author
     let content = req.body.content
 
-    newPost(author, content)
+    createPost(author, content)
     res.send(`${author} made a new post`)
 })
 
 app.get('/:id', (req, res) => {
-    res.send(getPost(req.params.id))
+    let id = req.params.id
+    let post = getPost(id)
+
+    res.send(post)
 })
 
+app.put('/:id', (req, res) => {
+    let id = req.params.id
+    let author = req.body.author
+    let content = req.body.content
+
+    updatePost(id, author, content)
+    res.send(`Post ${id} was updated`)
+})
+
+app.delete('/:id', (req, res) => {
+    let id = req.params.id
+
+    deletePost(id)
+    res.send(`Post ${id} was deleted`)
+})
 
 // app.get('/', (req, res) => {
 //     res.send('Hello World!')
