@@ -27,26 +27,27 @@ function updatePost(i, author, content) {
 // TESTING THE FUNCTIONS
 // Should return an empty database
 console.log(allPosts())
+
 // []
 
 // Should add 3 posts to the database
-createPost("Mr meat", "The sea is red, IMO")
-createPost("Mr fish", "The sea is blue, IMO")
-createPost("Mr egg", "The sea is yellow, IMO")
+createPost("Elon Musk", "I am buying cocacola")
+createPost("Hack Sultan", "Techies Assemble")
+createPost("Aribad Awulo", "Day 1 of #365daysofcode")
 
 // Should return the database with 3 posts
 console.log(allPosts())
 
 // [
-//     { author: 'Mr meat', content: 'The sea is red, IMO' },
-//     { author: 'Mr fish', content: 'The sea is blue, IMO' },
-//     { author: 'Mr egg', content: 'The sea is yellow, IMO' }
+//     { author: 'Elon Musk', content: 'I am buying cocacola' },
+//     { author: 'Hack Sultan', content: 'Techies Assemble' },
+//     { author: 'Aribad Awulo', content: 'Day 1 of #365daysofcode' }
 // ]
 
-// Should return the second post in the database\
+// Should return the second post in the database
 console.log(getPost(2))
 
-//  { author: 'Mr fish', content: 'The sea is blue, IMO' }
+//  { author: 'Hack Sultan', content: 'Techies Assemble' }
 
 // Should delete the first post
 deletePost(1)
@@ -55,19 +56,19 @@ deletePost(1)
 console.log(allPosts())
 
 // [
-//     { author: 'Mr fish', content: 'The sea is blue, IMO' },
-//     { author: 'Mr egg', content: 'The sea is yellow, IMO' }
+//     { author: 'Hack Sultan', content: 'Techies Assemble' },
+//     { author: 'Aribad Awulo', content: 'Day 1 of #365daysofcode' }
 // ]
 
 // Should update the second post
-updatePost(2, "Miss fish", "I don't care about the sea")
+updatePost(2, "Aribad Awulo", "Day 2 of #365daysofcode")
 
 // Should return the entire database
 console.log(allPosts())
 
 // [
-//     { author: 'Mr fish', content: 'The sea is blue, IMO' },
-//     { author: 'Miss fish', content: "I don't care about the sea" }
+//     { author: 'Hack Sultan', content: 'Techies Assemble' },
+//     { author: 'Aribad Awulo', content: "Day 2 of #365daysofcode" }
 // ]
 
 module.exports = {
