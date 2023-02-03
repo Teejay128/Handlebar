@@ -1,7 +1,11 @@
 const fakeDb = [];
 
 function allPosts(){
-    return fakeDb
+    let length = fakeDb.length
+    return {
+        length,
+        fakeDb
+    }
 }
 
 function getPost(i){

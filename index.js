@@ -25,22 +25,24 @@ app.get('/', (req, res) => {
     res.send(posts)
 })
 
-app.post('/', (req, res) => {
+app.get('/:id', (req, res) => {
+    let id = req.params.id
+    let post = getPost(id)
+    
+    res.send(post)
+})
+
+// app.post('/', (req, res) => {
+app.get('/new', (req, res) => {
     let author = req.body.author
     let content = req.body.content
 
     createPost(author, content)
     res.send(`${author} made a new post`)
 })
-
-app.get('/:id', (req, res) => {
-    let id = req.params.id
-    let post = getPost(id)
-
-    res.send(post)
-})
-
-app.put('/:id', (req, res) => {
+    
+// app.put('/:id', (req, res) => {
+app.get('/update/:id', (req, res) => {
     let id = req.params.id
     let author = req.body.author
     let content = req.body.content
@@ -49,7 +51,8 @@ app.put('/:id', (req, res) => {
     res.send(`Post ${id} was updated`)
 })
 
-app.delete('/:id', (req, res) => {
+// app.delete('/:id', (req, res) => {
+app.get('/delete/:id', (req, res) => {
     let id = req.params.id
 
     deletePost(id)
@@ -57,8 +60,7 @@ app.delete('/:id', (req, res) => {
 })
 
 // app.get('/', (req, res) => {
-//     res.send('Hello World!')
-//     // res.render('main', { layout: 'index', jinjurikis: fakeApi()})
+    // res.render('main', { layout: 'index', jinjurikis: fakeApi()})
 // })
 
 app.listen(3000, (req, res) => {
